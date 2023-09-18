@@ -1,195 +1,152 @@
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+/* Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #000;
+  background-color: #e3f2fd;
 }
 
-section {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2px;
-    flex-wrap: wrap;
-    overflow: hidden;
+/* For Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f2f2f2;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #ccc;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #aaa;
 }
 
-section::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(#000, #0f0, #000);
-    animation: animate 5s linear infinite;
+.container {
+  position: relative;
+  max-width: 480px;
+  width: 100%;
+  border-radius: 8px;
+  padding: 25px;
+  margin: 85px auto 0;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-
-section span {
-    position: relative;
-    display: block;
-    width: calc(6.25vw - 2px);
-    height: calc(6.25vw - 2px);
-    background: #181818;
-    z-index: 2;
-    transition: 1.5s;
+.container .input-field {
+  position: relative;
+  height: 64px;
+  width: 100%;
 }
-
-section span:hover {
-    background: #0f0;
-    transition: 0s;
+.input-field textarea {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 18px;
+  font-weight: 400;
+  border-radius: 8px;
+  padding: 18px 45px 18px 15px;
+  border: 1px solid #ccc;
+  resize: none;
 }
-
-section .signin {
-    position: absolute;
-    width: 400px;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    border-radius: 4px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
+.input-field textarea:focus {
+  border-color: #4070f4;
 }
-
-section .signin .content {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 40px;
+textarea::-webkit-scrollbar {
+  display: none;
 }
-
-.wrapper {
-    width: 370px;
-    padding: 25px 30px;
-    border-radius: 7px;
-    background: #fff;
-    box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.05);
+.input-field .note-icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 24px;
+  color: #707070;
 }
-
-.wrapper header {
-    font-size: 28px;
-    font-weight: 500;
-    text-align: center;
+.input-field textarea:focus ~ .note-icon {
+  color: #4070f4;
 }
-
-.wrapper form {
-    margin: 35px 0 20px;
+.container .todoLists {
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 10px;
 }
-
-form .row {
-    display: flex;
-    margin-bottom: 20px;
-    flex-direction: column;
+.todoLists .list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  background-color: #f2f2f2;
+  padding: 20px 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  position: relative;
+  cursor: pointer;
 }
-
-form .row label {
-    font-size: 18px;
-    margin-bottom: 5px;
+.todoLists .list input {
+  height: 16px;
+  min-width: 16px;
+  accent-color: #4070f4;
+  pointer-events: none;
 }
-
-form .row:nth-child(2) label {
-    font-size: 17px;
+.todoLists .list .task {
+  margin: 0 30px 0 15px;
+  word-break: break-all;
 }
-
-form :where(textarea, select, button) {
-    outline: none;
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 5px;
+.list input:checked ~ .task {
+  text-decoration: line-through;
 }
-
-form .row textarea {
-    resize: none;
-    height: 110px;
-    font-size: 15px;
-    padding: 8px 10px;
-    border: 1px solid #999;
+.todoLists .list i {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #707070;
+  padding: 5px;
+  opacity: 0.6;
+  display: none;
 }
-
-form .row textarea::-webkit-scrollbar {
-    width: 0px;
+.todoLists .list:hover i {
+  display: inline-flex;
 }
-
-form .row .outer {
-    height: 47px;
-    display: flex;
-    padding: 0 10px;
-    align-items: center;
-    border-radius: 5px;
-    justify-content: center;
-    border: 1px solid #999;
+.todoLists .list i:hover {
+  opacity: 1;
 }
-
-form .row select {
-    font-size: 14px;
-    background: none;
+.container .pending-tasks {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 25px;
 }
-
-form .row select::-webkit-scrollbar {
-    width: 8px;
+.pending-tasks span {
+  color: #333;
 }
-
-form .row select::-webkit-scrollbar-track {
-    background: #fff;
+.pending-tasks .clear-button {
+  padding: 6px 12px;
+  outline: none;
+  border: none;
+  background: #4070f4;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  pointer-events: none;
+  white-space: nowrap;
 }
-
-form .row select::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 8px;
-    border-right: 2px solid #ffffff;
+.clear-button:hover {
+  background-color: #0e4bf1;
 }
-
-form button {
-    height: 52px;
-    color: #fff;
-    font-size: 17px;
-    cursor: pointer;
-    margin-top: 10px;
-    background: #675AFE;
-    transition: 0.3s ease;
-    font-family: "Roboto";
-}
-
-form button:hover {
-    background: red;
-}
-
-@keyframes animate {
-    0% {
-        transform: translateY(-100%);
-    }
-
-    100% {
-        transform: translateY(100%);
-    }
-}
-
-@media (max-width: 900px) {
-    section span {
-        width: calc(10vw - 2px);
-        height: calc(10vw - 2px);
-    }
-}
-
-@media (max-width: 600px) {
-    section span {
-        width: calc(20vw - 2px);
-        height: calc(20vw - 2px);
-    }
+@media screen and (max-width: 350px) {
+  .container {
+    padding: 25px 10px;
+  }
 }
